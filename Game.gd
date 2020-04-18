@@ -2,7 +2,7 @@ extends Node2D
 
 var UITiles = Global.UITileEnum
 var GroundTiles = Global.GroundTileEnum
-
+var HighlightTiles = Global.HighlightTileEnum
 
 var mouse_up = true
 var finished = false
@@ -97,13 +97,14 @@ func init_tilemaps():
 func highlight_crops():
 	if not mouse_up:
 		return
-	$Ground/UI.clear()	
+	$Ground/Highlight.clear()	
 	
 	var cell = $Ground.world_to_map($Ground.get_local_mouse_position())
 	if $Ground.cell_has_crop(cell):
 		var adjacent_crops = $Ground.get_adjacent_of_same_type(cell)
 		for _cell in adjacent_crops:
-			$Ground/UI.set_cellv(_cell, UITiles.ADJACENT_HIGHLIGHT)
+			$Ground/Highlight.set_cellv(_cell, HighlightTiles.HIGHLIGHT)
+			$Ground/Highlight.update_bitmask_area(_cell)
 	
 
 # Gameplay Methods
@@ -126,3 +127,4 @@ func process_tiles():
 				
 	for cell in $Ground.get_crop_cells():
 		$Ground/Effects.decrease_water(cell)
+		
