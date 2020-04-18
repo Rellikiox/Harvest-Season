@@ -1,10 +1,14 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui/Card.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/UI.gd" type="Script" id=2]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
 [node name="UI" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -60,3 +64,37 @@ text = "Turn 1"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -127.265
+margin_top = -138.219
+margin_right = 8.73456
+margin_bottom = -98.219
+custom_constants/separation = 136
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Card" parent="UI/HBoxContainer" instance=ExtResource( 1 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 40.0
+
+[node name="Card2" parent="UI/HBoxContainer" instance=ExtResource( 1 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 136.0
+margin_top = 0.0
+margin_right = 136.0
+margin_bottom = 40.0
