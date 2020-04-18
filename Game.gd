@@ -95,10 +95,7 @@ func process_tiles():
 		Vector2(1, 0), Vector2(0, 1), Vector2(-1, 0), Vector2(0, -1)
 	]
 	for cell in $Ground.get_used_cells_by_id(GroundTiles.SPRINKLER):
-		for offset in water_offsets:
-			var other_cell = cell + offset
-			if $Ground.cell_has_plant(other_cell):
-				$Ground/Effects.increase_water(other_cell)
+		$Ground/Effects.water_adjacent(cell)
 				
 	for cell in $Ground.get_crop_cells():
 		$Ground/Effects.decrease_water(cell)
