@@ -3,15 +3,18 @@ extends Node
 var DeckManager = preload('res://cards/DeckManager.gd')
 
 export (int) var ACTIONS_PER_TURN = 3
+export (int) var MAX_LIVES = 3
 
 var Game = null
 var UI = null
 var Deck = null
 
 var actions_left = 0
+var lives_left = 0
 
 
 func init(_game, _ui):
+	lives_left = MAX_LIVES
 	Game = _game
 	UI = _ui
 	Deck = DeckManager.new()
@@ -42,3 +45,14 @@ func replenish_actions():
 func trigger_turn_start():
 	var new_cards = Deck.draw_cards(5)
 	UI.set_cards(new_cards)
+	
+	
+func _on_crop_death():
+	lives_left -= 1
+	UI.set_n_lives(lives_left)
+	if lives_left <= 0:
+		trigger_game_over()
+		
+		
+func trigger_game_over():
+	pass

@@ -10,16 +10,17 @@ var mouse_up = true
 # Engine Callbacks
 
 func _ready():
-	$UI/UI.connect('drag_position', self, '_on_card_drag')
-	$UI/UI.connect('drop_position', self, '_on_card_drop')
-	$UI/UI.connect('end_turn_button', $TurnManager, 'end_turn')
+	$UI.connect('drag_position', self, '_on_card_drag')
+	$UI.connect('drop_position', self, '_on_card_drop')
+	$UI.connect('end_turn_button', $TurnManager, 'end_turn')
+	$Ground/Effects.connect('crop_death', $TurnManager, '_on_crop_death')
 	
 	init_tilemaps()
-	$TurnManager.init(self, $UI/UI)
+	$TurnManager.init(self, $UI)
 
 
 func _physics_process(delta):
-	$UI/UI/Points.text = '%d Points' % calculate_points()
+	$UI.set_points(calculate_points())
 	highlight_crops()
 
 

@@ -4,26 +4,18 @@ extends Node
 var deck = [
 	Global.CardEnum.PLANT_BEET,
 	Global.CardEnum.PLANT_BEET,
-	Global.CardEnum.PLANT_BEET,
-	Global.CardEnum.PLANT_PEAS,
 	Global.CardEnum.PLANT_PEAS,
 	Global.CardEnum.PLANT_PEAS,
 	Global.CardEnum.PLANT_CABBAGE,
 	Global.CardEnum.PLANT_CABBAGE,
-	Global.CardEnum.PLANT_CABBAGE,
 	Global.CardEnum.PLANT_ONION,
 	Global.CardEnum.PLANT_ONION,
-	Global.CardEnum.PLANT_ONION,
-	Global.CardEnum.PLANT_POTATO,
 	Global.CardEnum.PLANT_POTATO,
 	Global.CardEnum.PLANT_POTATO,
 	Global.CardEnum.PLACE_SPRINKLER,
-	Global.CardEnum.PLACE_SPRINKLER,
 	Global.CardEnum.DIG_GROUND,
 	Global.CardEnum.DIG_GROUND,
 	Global.CardEnum.DIG_GROUND,
-	Global.CardEnum.DELETE_TILE,
-	Global.CardEnum.DELETE_TILE,
 	Global.CardEnum.DELETE_TILE
 ]
 
