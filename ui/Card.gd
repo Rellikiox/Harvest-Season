@@ -35,6 +35,8 @@ func set_card_type(_card_type):
 			card = Cards.PlaceSprinklerCard.new()
 		Global.CardEnum.DIG_GROUND:
 			card = Cards.DigGroundCard.new()
+		Global.CardEnum.DELETE_TILE:
+			card = Cards.DeleteTileCard.new()
 			
 	$CardTexture.texture = card.texture
 	

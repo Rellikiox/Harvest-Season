@@ -21,7 +21,10 @@ var deck = [
 	Global.CardEnum.PLACE_SPRINKLER,
 	Global.CardEnum.DIG_GROUND,
 	Global.CardEnum.DIG_GROUND,
-	Global.CardEnum.DIG_GROUND
+	Global.CardEnum.DIG_GROUND,
+	Global.CardEnum.DELETE_TILE,
+	Global.CardEnum.DELETE_TILE,
+	Global.CardEnum.DELETE_TILE
 ]
 
 var draw_pile = []

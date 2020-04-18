@@ -106,3 +106,16 @@ class DigGroundCard extends BaseCard:
 
 	func place(cell:Vector2, ground:TileMap, effects:TileMap):
 		ground.set_cellv(cell, tile)
+
+
+class DeleteTileCard extends BaseCard:	
+	var tile = Global.GroundTileEnum.DIRT
+	var icon = preload('res://assets/delete-icon.png')
+	var texture = preload('res://assets/delete-card.png')
+	
+	func can_be_placed(cell:Vector2, ground:TileMap):
+		return ground.cell_has_plant(cell) or ground.get_cellv(cell) == Global.GroundTileEnum.SPRINKLER
+
+	func place(cell:Vector2, ground:TileMap, effects:TileMap):
+		ground.set_cellv(cell, tile)
+		effects.set_cellv(cell, Global.EffectsEnum.EMPTY)
