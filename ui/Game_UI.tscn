@@ -74,27 +74,17 @@ margin_left = -127.265
 margin_top = -138.219
 margin_right = 8.73456
 margin_bottom = -98.219
-custom_constants/separation = 136
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Card" parent="UI/HBoxContainer" instance=ExtResource( 1 )]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 0.0
-margin_bottom = 40.0
+margin_right = 128.0
+margin_bottom = 128.0
 
 [node name="Card2" parent="UI/HBoxContainer" instance=ExtResource( 1 )]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 136.0
-margin_top = 0.0
-margin_right = 136.0
-margin_bottom = 40.0
+margin_left = 132.0
+margin_right = 260.0
+margin_bottom = 128.0
+
+[editable path="UI/HBoxContainer/Card"]
