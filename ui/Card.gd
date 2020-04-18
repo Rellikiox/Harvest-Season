@@ -1,7 +1,9 @@
 extends MarginContainer
 
-var Game = preload("res://Game.gd")
-var PotatoIcon = preload("res://assets/potato-icon.png")
+var PotatoIcon = preload('res://assets/potato-icon.png')
+var Cards = preload('res://cards/Cards.gd')
+
+export (Global.CardEnum) var card_type 
 
 
 func get_drag_data(_pos):
@@ -9,16 +11,7 @@ func get_drag_data(_pos):
 	icon.texture = PotatoIcon
 	set_drag_preview(icon)
 	
-	return Game.GroundTiles.POTATO
-	
-	
-func can_drop_data(_pos, data):
-	return true
-
-
-func drop_data(_pos, data):
-	print(_pos)
-	print(data)
+	return Cards.PlantPotatoCard.new()
 
 
 func _on_CardTexture_mouse_entered():

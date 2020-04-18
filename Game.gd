@@ -1,7 +1,7 @@
 extends Node2D
 
-enum GroundTiles {EMPTY = -1, DIRT, SOIL, POTATO, ONION, LEGUMEN, ROOT, BRASSICA, SPRINKLER}
-enum UITiles {EMPTY = -1, HIGHLIGHT}
+var UITiles = Global.UITileEnum
+var GroundTiles = Global.GroundTileEnum
 
 
 # Engine Callbacks
@@ -26,20 +26,21 @@ func _input(event):
 # Interactions with card dragging
 
 func _on_card_drag(_position, card):
-	var tilemap_position = $Ground.world_to_map($Ground.get_local_mouse_position())
-	if not is_valid_cell(tilemap_position):
+	var cell = $Ground.world_to_map($Ground.get_local_mouse_position())
+	if not is_valid_cell(cell):
 		return
 	
 	$Ground/UI.clear()
-	$Ground/UI.set_cellv(tilemap_position, UITiles.HIGHLIGHT)
+	$Ground/UI.set_cellv(cell, UITiles.HIGHLIGHT)
 
 
-func _on_card_drop(_position, card):
-	var tilemap_position = $Ground.world_to_map($Ground.get_local_mouse_position())
-	if not is_valid_cell(tilemap_position):
+func _on_card_drop(_position, card:Cards.PlantPotatoCard):
+	var cell = $Ground.world_to_map($Ground.get_local_mouse_position())
+	if not is_valid_cell(cell):
 		return
 	
-	$Ground.set_cellv(tilemap_position, card)
+	if card.can_be_placed(cell, $Ground):
+		card.place(cell, $Ground)
 	
 	
 # Tileset management	
