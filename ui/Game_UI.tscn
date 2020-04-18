@@ -81,7 +81,7 @@ __meta__ = {
 [node name="Card" parent="UI/HBoxContainer" instance=ExtResource( 1 )]
 margin_right = 128.0
 margin_bottom = 128.0
-card_type = 1
+card_type = 3
 
 [node name="Card2" parent="UI/HBoxContainer" instance=ExtResource( 1 )]
 margin_left = 132.0

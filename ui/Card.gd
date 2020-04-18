@@ -1,17 +1,28 @@
 extends MarginContainer
 
 var PotatoIcon = preload('res://assets/potato-icon.png')
-var Cards = preload('res://cards/Cards.gd')
 
-export (Global.CardEnum) var card_type 
+export (Global.CardEnum) var card_type setget set_card_type
 
+var card = null
+
+
+func set_card_type(card_type):
+	match card_type:
+		Global.CardEnum.PLANT_POTATO:
+			card = Cards.PlantPotatoCard.new()
+		Global.CardEnum.PLANT_LEGUMEN:
+			card = Cards.PlantLegumenCard.new()
+			
+	$CardTexture.texture = card.texture
+	
 
 func get_drag_data(_pos):
 	var icon = TextureRect.new()
-	icon.texture = PotatoIcon
+	icon.texture = card.icon
 	set_drag_preview(icon)
 	
-	return Cards.PlantPotatoCard.new()
+	return card
 
 
 func _on_CardTexture_mouse_entered():

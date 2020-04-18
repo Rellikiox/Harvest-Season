@@ -31,10 +31,13 @@ func _on_card_drag(_position, card):
 		return
 	
 	$Ground/UI.clear()
-	$Ground/UI.set_cellv(cell, UITiles.HIGHLIGHT)
+	if card.can_be_placed(cell, $Ground):
+		$Ground/UI.set_cellv(cell, UITiles.HIGHLIGHT)
+	else:
+		$Ground/UI.set_cellv(cell, UITiles.INVALID)
 
 
-func _on_card_drop(_position, card:Cards.PlantPotatoCard):
+func _on_card_drop(_position, card:Cards.BaseCard):
 	var cell = $Ground.world_to_map($Ground.get_local_mouse_position())
 	if not is_valid_cell(cell):
 		return
