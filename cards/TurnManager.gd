@@ -26,7 +26,8 @@ func end_turn():
 	replenish_actions()
 	
 	
-func action_spent():
+func card_played(card):
+	UI.discard_card(card)
 	actions_left -= 1
 	if actions_left == 0:
 		UI.disable_cards()

@@ -75,3 +75,34 @@ class PlantBeetCard extends BaseCard:
 	func place(cell:Vector2, ground:TileMap, effects:TileMap):
 		ground.set_cellv(cell, tile)
 		effects.set_cellv(cell, Global.EffectsEnum.WATER_3)
+
+
+class PlaceSprinklerCard extends BaseCard:	
+	var tile = Global.GroundTileEnum.SPRINKLER
+	var icon = preload('res://assets/sprinkler-icon.png')
+	var texture = preload('res://assets/sprinkler-card.png')
+	var water_offsets = [
+		Vector2(1, 0), Vector2(0, 1), Vector2(-1, 0), Vector2(0, -1)
+	]
+	
+	func can_be_placed(cell:Vector2, ground:TileMap):
+		return ground.get_cellv(cell) in [Global.GroundTileEnum.DIRT, Global.GroundTileEnum.SOIL]
+
+	func place(cell:Vector2, ground:TileMap, effects:TileMap):
+		ground.set_cellv(cell, tile)
+		for offset in water_offsets:
+			var other_cell = cell + offset
+			if ground.cell_has_plant(other_cell):
+				effects.increase_water(other_cell)
+
+
+class DigGroundCard extends BaseCard:	
+	var tile = Global.GroundTileEnum.SOIL
+	var icon = preload('res://assets/dig-icon.png')
+	var texture = preload('res://assets/dig-card.png')
+	
+	func can_be_placed(cell:Vector2, ground:TileMap):
+		return ground.get_cellv(cell) == Global.GroundTileEnum.DIRT
+
+	func place(cell:Vector2, ground:TileMap, effects:TileMap):
+		ground.set_cellv(cell, tile)

@@ -20,6 +20,12 @@ func discard_cards():
 	for card in $CardContainer.get_children():
 		card.queue_free()
 		
+		
+func discard_card(card):
+	for ui_card in $CardContainer.get_children():
+		if ui_card.card == card:
+			ui_card.queue_free()
+		
 
 func set_cards(new_cards):
 	for card in new_cards:

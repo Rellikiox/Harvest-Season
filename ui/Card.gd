@@ -18,7 +18,8 @@ func enable_interactions(enabled):
 	$CardTexture.material.set_shader_param('grayscale', not enabled)
 
 
-func set_card_type(card_type):
+func set_card_type(_card_type):
+	card_type = _card_type
 	match card_type:
 		Global.CardEnum.PLANT_POTATO:
 			card = Cards.PlantPotatoCard.new()
@@ -30,6 +31,10 @@ func set_card_type(card_type):
 			card = Cards.PlantOnionCard.new()
 		Global.CardEnum.PLANT_BEET:
 			card = Cards.PlantBeetCard.new()
+		Global.CardEnum.PLACE_SPRINKLER:
+			card = Cards.PlaceSprinklerCard.new()
+		Global.CardEnum.DIG_GROUND:
+			card = Cards.DigGroundCard.new()
 			
 	$CardTexture.texture = card.texture
 	
@@ -42,6 +47,7 @@ func get_drag_data(_pos):
 		return card
 	else:
 		return null
+		
 
 func _on_CardTexture_mouse_entered():
 	if interactions_enabled:

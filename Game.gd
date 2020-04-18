@@ -29,7 +29,7 @@ func _input(event):
 
 func _on_card_drag(_position, card):
 	var cell = $Ground.world_to_map($Ground.get_local_mouse_position())
-	if not is_valid_cell(cell):
+	if not $Ground.is_valid_cell(cell):
 		return
 	
 	$Ground/UI.clear()
@@ -43,19 +43,15 @@ func _on_card_drop(_position, card:Cards.BaseCard):
 	$Ground/UI.clear()
 	
 	var cell = $Ground.world_to_map($Ground.get_local_mouse_position())
-	if not is_valid_cell(cell):
+	if not $Ground.is_valid_cell(cell):
 		return
 	
 	if card.can_be_placed(cell, $Ground):
 		card.place(cell, $Ground, $Ground/Effects)
-		$TurnManager.action_spent()
+		$TurnManager.card_played(card)
 	
 	
 # Tileset management	
-
-func is_valid_cell(cell):
-	return cell.x >= 0 and cell.x <= 6 and cell.y >= 0 and cell.y <= 6
-	
 
 func init_tilemaps():
 	# Clear any UI
@@ -95,9 +91,14 @@ func calculate_points():
 
 
 func process_tiles():
-	for cell in $Ground/Effects.get_used_cells():
-		var level = $Ground/Effects.get_cellv(cell)
-		if level == Global.EffectsEnum.DEAD:
-			continue
-		
-		$Ground/Effects.set_cellv(cell, level - 1)
+	var water_offsets = [
+		Vector2(1, 0), Vector2(0, 1), Vector2(-1, 0), Vector2(0, -1)
+	]
+	for cell in $Ground.get_used_cells_by_id(GroundTiles.SPRINKLER):
+		for offset in water_offsets:
+			var other_cell = cell + offset
+			if $Ground.cell_has_plant(other_cell):
+				$Ground/Effects.increase_water(other_cell)
+				
+	for cell in $Ground.get_crop_cells():
+		$Ground/Effects.decrease_water(cell)
