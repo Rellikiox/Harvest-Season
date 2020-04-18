@@ -8,6 +8,8 @@ var interactions_enabled = true
 
 func _ready():
 	set_card_type(card_type)
+	$CardTexture.material = $CardTexture.material.duplicate()
+	enable_interactions(true)
 	
 
 func enable_interactions(enabled):

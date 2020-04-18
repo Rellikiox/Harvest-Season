@@ -13,6 +13,50 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="CardContainer" type="HBoxContainer" parent="UI"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -328.0
+margin_top = -145.0
+margin_right = 328.0
+margin_bottom = -17.0
+grow_horizontal = 2
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Card" parent="UI/CardContainer" instance=ExtResource( 1 )]
+margin_right = 128.0
+margin_bottom = 128.0
+card_type = 5
+
+[node name="Card2" parent="UI/CardContainer" instance=ExtResource( 1 )]
+margin_left = 132.0
+margin_right = 260.0
+margin_bottom = 128.0
+card_type = 3
+
+[node name="Card3" parent="UI/CardContainer" instance=ExtResource( 1 )]
+margin_left = 264.0
+margin_right = 392.0
+margin_bottom = 128.0
+card_type = 1
+
+[node name="Card4" parent="UI/CardContainer" instance=ExtResource( 1 )]
+margin_left = 396.0
+margin_right = 524.0
+margin_bottom = 128.0
+card_type = 2
+
+[node name="Card5" parent="UI/CardContainer" instance=ExtResource( 1 )]
+margin_left = 528.0
+margin_right = 656.0
+margin_bottom = 128.0
+card_type = 4
+
 [node name="Open Menu" type="Button" parent="UI"]
 anchor_left = 1.0
 anchor_right = 1.0
@@ -67,47 +111,4 @@ text = "Turn 1"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="CardContainer" type="HBoxContainer" parent="UI"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -262.0
-margin_top = -144.686
-margin_right = 262.0
-margin_bottom = -16.686
-grow_horizontal = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Card" parent="UI/CardContainer" instance=ExtResource( 1 )]
-margin_right = 128.0
-margin_bottom = 128.0
-card_type = 5
-
-[node name="Card2" parent="UI/CardContainer" instance=ExtResource( 1 )]
-margin_left = 132.0
-margin_right = 260.0
-margin_bottom = 128.0
-card_type = 3
-
-[node name="Card3" parent="UI/CardContainer" instance=ExtResource( 1 )]
-margin_left = 264.0
-margin_right = 392.0
-margin_bottom = 128.0
-card_type = 1
-
-[node name="Card4" parent="UI/CardContainer" instance=ExtResource( 1 )]
-margin_left = 396.0
-margin_right = 524.0
-margin_bottom = 128.0
-card_type = 2
-
-[node name="Card5" parent="UI/CardContainer" instance=ExtResource( 1 )]
-margin_left = 528.0
-margin_right = 656.0
-margin_bottom = 128.0
-card_type = 4
 [connection signal="pressed" from="UI/End Turn" to="UI" method="_on_End_Turn_pressed"]
