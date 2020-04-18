@@ -55,4 +55,5 @@ func _on_crop_death():
 		
 		
 func trigger_game_over():
-	pass
+	UI.display_gameover(Game.calculate_points())
+	Game.finished = true

@@ -9,6 +9,7 @@
 script = ExtResource( 4 )
 
 [node name="HUD" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
@@ -139,9 +140,72 @@ margin_bottom = 64.0
 texture = ExtResource( 3 )
 
 [node name="Gameover" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gameover" type="Label" parent="Gameover"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -34.7839
+margin_top = -346.029
+margin_right = 39.2161
+margin_bottom = -332.029
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game over!"
+align = 1
+
+[node name="PointLabel" type="Label" parent="Gameover"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -52.9598
+margin_top = -316.112
+margin_right = 64.0402
+margin_bottom = -302.112
+grow_horizontal = 2
+grow_vertical = 2
+text = "Your point total is:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Points" type="Label" parent="Gameover"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -52.9598
+margin_top = -280.655
+margin_right = 64.0402
+margin_bottom = -266.655
+grow_horizontal = 2
+grow_vertical = 2
+text = "999"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Restart" type="Button" parent="Gameover"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -4.89197
+margin_top = -254.876
+margin_right = 7.10803
+margin_bottom = -234.876
+text = "Restart"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="pressed" from="HUD/End Turn" to="." method="_on_End_Turn_pressed"]
+[connection signal="pressed" from="Gameover/Restart" to="." method="_on_Restart_pressed"]

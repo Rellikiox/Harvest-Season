@@ -69,3 +69,13 @@ func set_n_lives(n_lives):
 func Gameover_init():
 	$Gameover.visible = false
 	
+
+func display_gameover(final_points):
+	$Gameover.visible = true
+	$HUD.visible = false
+	
+	$Gameover/Points.text = str(final_points)
+	
+
+func _on_Restart_pressed():
+	get_tree().reload_current_scene()

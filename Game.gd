@@ -5,6 +5,7 @@ var GroundTiles = Global.GroundTileEnum
 
 
 var mouse_up = true
+var finished = false
 
 
 # Engine Callbacks
@@ -20,6 +21,8 @@ func _ready():
 
 
 func _physics_process(delta):
+	if finished:
+		return
 	$UI.set_points(calculate_points())
 	highlight_crops()
 
@@ -27,7 +30,11 @@ func _physics_process(delta):
 func _input(event):
 	if event.is_action_pressed('restart'):
 		get_tree().reload_current_scene()
-	elif event.is_action_pressed('click'):
+	
+	if finished:
+		return
+			
+	if event.is_action_pressed('click'):
 		mouse_up = false
 	elif event.is_action_released('click'):
 		mouse_up = true
