@@ -4,6 +4,8 @@ var UITiles = Global.UITileEnum
 var GroundTiles = Global.GroundTileEnum
 
 
+var mouse_up = true
+
 
 # Engine Callbacks
 
@@ -18,12 +20,17 @@ func _ready():
 
 func _physics_process(delta):
 	$UI/UI/Points.text = '%d Points' % calculate_points()
+	highlight_crops()
 
 
 func _input(event):
 	if event.is_action_pressed('restart'):
 		get_tree().reload_current_scene()
-		
+	elif event.is_action_pressed('click'):
+		mouse_up = false
+	elif event.is_action_released('click'):
+		mouse_up = true
+
 
 # Interactions with card dragging
 
@@ -78,6 +85,18 @@ func init_tilemaps():
 			$Ground.set_cell(x, y, GroundTiles.SOIL)
 			extra_soil_placed += 1
 	
+	
+func highlight_crops():
+	if not mouse_up:
+		return
+	$Ground/UI.clear()	
+	
+	var cell = $Ground.world_to_map($Ground.get_local_mouse_position())
+	if $Ground.cell_has_crop(cell):
+		var adjacent_crops = $Ground.get_adjacent_of_same_type(cell)
+		for _cell in adjacent_crops:
+			$Ground/UI.set_cellv(_cell, UITiles.ADJACENT_HIGHLIGHT)
+	
 
 # Gameplay Methods
 
@@ -95,7 +114,7 @@ func process_tiles():
 		Vector2(1, 0), Vector2(0, 1), Vector2(-1, 0), Vector2(0, -1)
 	]
 	for cell in $Ground.get_used_cells_by_id(GroundTiles.SPRINKLER):
-		$Ground/Effects.water_adjacent(cell)
+		$Ground.water_adjacent(cell)
 				
 	for cell in $Ground.get_crop_cells():
 		$Ground/Effects.decrease_water(cell)

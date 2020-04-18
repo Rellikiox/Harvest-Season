@@ -46,7 +46,7 @@ func can_drop_data(_position, data):
 
 func drop_data(_position, data):	
 	emit_signal("drop_position", _position, data)
-
+	
 
 func _on_End_Turn_pressed():
 	emit_signal('end_turn_button')
