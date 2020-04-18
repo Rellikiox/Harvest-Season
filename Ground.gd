@@ -46,7 +46,7 @@ func get_adjacent_of_same_type(target):
 		if cell in visited:
 			continue
 		visited.append(cell)
-		if get_cellv(cell) == type:
+		if get_cellv(cell) == type and $Effects.get_cellv(cell) != Global.EffectsEnum.DEAD:
 			cells.append(cell)
 			for _cell in get_neighbours(cell):
 				open_set.append(_cell)
