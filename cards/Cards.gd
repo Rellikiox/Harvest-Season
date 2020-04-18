@@ -7,7 +7,7 @@ class BaseCard:
 	func can_be_placed(cell:Vector2, ground:TileMap):
 		pass
 		
-	func place(cell:Vector2, ground:TileMap):
+	func place(cell:Vector2, ground:TileMap, effects:TileMap):
 		pass
 		
 
@@ -19,8 +19,9 @@ class PlantPotatoCard extends BaseCard:
 	func can_be_placed(cell:Vector2, ground:TileMap):
 		return ground.get_cellv(cell) == Global.GroundTileEnum.SOIL
 
-	func place(cell:Vector2, ground:TileMap):
+	func place(cell:Vector2, ground:TileMap, effects:TileMap):
 		ground.set_cellv(cell, tile)
+		effects.set_cellv(cell, Global.EffectsEnum.WATER_3)
 
 
 class PlantPeasCard extends BaseCard:	
@@ -31,8 +32,9 @@ class PlantPeasCard extends BaseCard:
 	func can_be_placed(cell:Vector2, ground:TileMap):
 		return ground.get_cellv(cell) == Global.GroundTileEnum.SOIL
 
-	func place(cell:Vector2, ground:TileMap):
+	func place(cell:Vector2, ground:TileMap, effects:TileMap):
 		ground.set_cellv(cell, tile)
+		effects.set_cellv(cell, Global.EffectsEnum.WATER_3)
 
 
 class PlantCabbageCard extends BaseCard:	
@@ -43,8 +45,9 @@ class PlantCabbageCard extends BaseCard:
 	func can_be_placed(cell:Vector2, ground:TileMap):
 		return ground.get_cellv(cell) == Global.GroundTileEnum.SOIL
 
-	func place(cell:Vector2, ground:TileMap):
+	func place(cell:Vector2, ground:TileMap, effects:TileMap):
 		ground.set_cellv(cell, tile)
+		effects.set_cellv(cell, Global.EffectsEnum.WATER_3)
 
 
 
@@ -56,10 +59,9 @@ class PlantOnionCard extends BaseCard:
 	func can_be_placed(cell:Vector2, ground:TileMap):
 		return ground.get_cellv(cell) == Global.GroundTileEnum.SOIL
 
-	func place(cell:Vector2, ground:TileMap):
+	func place(cell:Vector2, ground:TileMap, effects:TileMap):
 		ground.set_cellv(cell, tile)
-
-
+		effects.set_cellv(cell, Global.EffectsEnum.WATER_3)
 
 
 class PlantBeetCard extends BaseCard:	
@@ -70,5 +72,6 @@ class PlantBeetCard extends BaseCard:
 	func can_be_placed(cell:Vector2, ground:TileMap):
 		return ground.get_cellv(cell) == Global.GroundTileEnum.SOIL
 
-	func place(cell:Vector2, ground:TileMap):
+	func place(cell:Vector2, ground:TileMap, effects:TileMap):
 		ground.set_cellv(cell, tile)
+		effects.set_cellv(cell, Global.EffectsEnum.WATER_3)
