@@ -1,0 +1,62 @@
+[gd_scene format=2]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Open Menu" type="Button" parent="UI"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -112.775
+margin_top = 18.6157
+margin_right = -25.7754
+margin_bottom = 38.6157
+text = "Open Menu"
+
+[node name="End Turn" type="Button" parent="UI"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -127.095
+margin_top = -74.415
+margin_right = -40.0952
+margin_bottom = -54.415
+text = "End Turn"
+
+[node name="Actions" type="Label" parent="UI"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 57.2789
+margin_top = -91.1428
+margin_right = 130.279
+margin_bottom = -60.1428
+text = "3/3
+Actions left"
+align = 1
+
+[node name="Points" type="Label" parent="UI"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -32.568
+margin_top = 21.4796
+margin_right = 35.432
+margin_bottom = 35.4796
+text = "999 Points"
+
+[node name="Turns" type="Label" parent="UI"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -178.949
+margin_top = 20.0476
+margin_right = -138.949
+margin_bottom = 34.0476
+text = "Turn 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
