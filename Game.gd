@@ -82,7 +82,7 @@ func reset_ui():
 func calculate_points():
 	var potatoes = len($Ground.get_used_cells_by_id(GroundTiles.POTATO))
 	var onions = len($Ground.get_used_cells_by_id(GroundTiles.ONION))
-	var legumens = len($Ground.get_used_cells_by_id(GroundTiles.LEGUMEN))
-	var roots = len($Ground.get_used_cells_by_id(GroundTiles.ROOT))
-	var brassica = len($Ground.get_used_cells_by_id(GroundTiles.BRASSICA))
-	return potatoes + onions + legumens + roots + brassica
+	var peas = len($Ground.get_used_cells_by_id(GroundTiles.PEAS))
+	var beets = len($Ground.get_used_cells_by_id(GroundTiles.BEET))
+	var cabbage = len($Ground.get_used_cells_by_id(GroundTiles.CABBAGE))
+	return potatoes + onions + peas + beets + cabbage
