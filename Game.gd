@@ -49,6 +49,8 @@ func is_valid_cell(cell):
 	
 
 func reset_land():
+	$Ground.clear()
+	
 	for x in range(7):
 		for y in range(7):
 			$Ground.set_cell(x, y, GroundTiles.DIRT)
