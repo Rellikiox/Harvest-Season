@@ -34,6 +34,7 @@ func card_played(card):
 	actions_left -= 1
 	if actions_left == 0:
 		UI.disable_cards()
+		UI.enable_end_turn()
 	UI.set_actions(actions_left, ACTIONS_PER_TURN)
 
 
@@ -45,6 +46,7 @@ func replenish_actions():
 func trigger_turn_start():
 	var new_cards = Deck.draw_cards(5)
 	UI.set_cards(new_cards)
+	UI.enable_end_turn(false)
 	
 	
 func _on_crop_death():

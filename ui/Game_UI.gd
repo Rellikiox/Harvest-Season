@@ -64,6 +64,10 @@ func set_n_lives(n_lives):
 		heart.texture = HeartFull if idx + 1 <= n_lives else HeartEmpty
 
 
+func enable_end_turn(enabled=true):
+	$HUD/EndTurn.disabled = not enabled
+	
+
 # Gameover
 
 func Gameover_init():

@@ -60,7 +60,7 @@ margin_right = 656.0
 margin_bottom = 128.0
 card_type = 4
 
-[node name="Open Menu" type="Button" parent="HUD"]
+[node name="OpenMenu" type="Button" parent="HUD"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -112.775
@@ -69,7 +69,7 @@ margin_right = -25.7754
 margin_bottom = 38.6157
 text = "Open Menu"
 
-[node name="End Turn" type="Button" parent="HUD"]
+[node name="EndTurn" type="Button" parent="HUD"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -207,5 +207,5 @@ text = "Restart"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="HUD/End Turn" to="." method="_on_End_Turn_pressed"]
+[connection signal="pressed" from="HUD/EndTurn" to="." method="_on_End_Turn_pressed"]
 [connection signal="pressed" from="Gameover/Restart" to="." method="_on_Restart_pressed"]
