@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/watercan.wav-376b62e8761f478377d05d6f028ab57b.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/watercan.wav"
+dest_files=[ "res://.import/watercan.wav-376b62e8761f478377d05d6f028ab57b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

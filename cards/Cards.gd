@@ -2,7 +2,6 @@ extends Node
 class_name Cards
 
 
-
 class BaseCard:	
 	func on_tile_hover(cell:Vector2, ground:TileMap, highlight:TileMap):
 		if can_be_placed(cell, ground):
@@ -19,6 +18,11 @@ class BaseCard:
 
 class BasePlantCard extends BaseCard:		
 	
+	var sounds = [
+		'plant_1.wav', 'plant_2.wav', 'plant_3.wav', 'plant_4.wav', 
+		'plant_5.wav', 'plant_6.wav', 'plant_7.wav', 'plant_8.wav', 
+	]
+	
 	func can_be_placed(cell:Vector2, ground:TileMap):
 		return (
 			ground.get_cellv(cell) == Global.GroundTileEnum.SOIL and 
@@ -27,6 +31,7 @@ class BasePlantCard extends BaseCard:
 
 	func place(cell:Vector2, ground:TileMap):
 		ground.plant_crop(cell, self.tile)
+		SoundManager.play_se(sounds[randi() % len(sounds)])
 		
 
 class PlantPotatoCard extends BasePlantCard:	
@@ -74,6 +79,7 @@ class PlaceSprinklerCard extends BaseCard:
 
 	func place(cell:Vector2, ground:TileMap):
 		ground.place_sprinkler(cell)
+		SoundManager.play_se('place_sprinkler.wav')
 
 
 class DigGroundCard extends BaseCard:	
@@ -86,6 +92,7 @@ class DigGroundCard extends BaseCard:
 
 	func place(cell:Vector2, ground:TileMap):
 		ground.set_cellv(cell, tile)
+		SoundManager.play_se('soil.wav')
 
 
 class DeleteTileCard extends BaseCard:	
@@ -97,6 +104,7 @@ class DeleteTileCard extends BaseCard:
 
 	func place(cell:Vector2, ground:TileMap):
 		ground.destroy_cell(cell)
+		SoundManager.play_se('delete.wav')
 
 
 class WateringCanCard extends BaseCard:	
@@ -116,8 +124,10 @@ class WateringCanCard extends BaseCard:
 	func place(cell:Vector2, ground:TileMap):
 		if ground.cell_has_crop(cell):
 			ground.water_crop_bed(cell)
+			SoundManager.play_se('watercan.wav')
 		else:
 			ground.reload_sprinkler(cell, 5)
+			SoundManager.play_se('refil_sprinkler.wav')
 
 
 class ScytheCanCard extends BaseCard:	
@@ -137,3 +147,4 @@ class ScytheCanCard extends BaseCard:
 	func place(cell:Vector2, ground:TileMap):
 		var crops = ground.get_adjacent_of_same_type(cell)
 		ground.harvest_crops(crops)
+		SoundManager.play_se('harvest.wav')

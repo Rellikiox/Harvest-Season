@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/refil_sprinkler.wav-5ffb954bc7b9b40c59d0b8e8c19ee070.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/refil_sprinkler.wav"
+dest_files=[ "res://.import/refil_sprinkler.wav-5ffb954bc7b9b40c59d0b8e8c19ee070.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

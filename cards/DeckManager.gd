@@ -1,6 +1,13 @@
 extends Node
 
 
+var crops = [
+	Global.CardEnum.PLANT_BEET,
+	Global.CardEnum.PLANT_PEAS,
+	Global.CardEnum.PLANT_CABBAGE,
+	Global.CardEnum.PLANT_ONION,
+	Global.CardEnum.PLANT_POTATO
+]
 var deck = {
 	Global.CardEnum.PLANT_BEET: 3,
 	Global.CardEnum.PLANT_PEAS: 3,

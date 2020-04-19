@@ -20,6 +20,7 @@ func _ready():
 	init_tilemaps()
 	$TurnManager.init(self, $UI)
 
+	SoundManager.play_bgm('background.wav')
 
 func _physics_process(delta):
 	if finished:
