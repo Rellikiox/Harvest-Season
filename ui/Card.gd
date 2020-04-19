@@ -6,6 +6,51 @@ var card = null
 var interactions_enabled = true
 
 
+
+const CARD_TEXT = {
+	Global.CardEnum.PLANT_POTATO: 
+"""Max size: 3
+
+When harvested:
+ +2 points per tile
+ +3 if max size""",
+	Global.CardEnum.PLANT_PEAS: 
+"""Max size: 5
+
+When harvested:
+ +1 point per tile
+ +10 if max size""",
+	Global.CardEnum.PLANT_CABBAGE: 
+"""Max size: 3
+
+When harvested:
+ +4 points per tile
+ +2 if max size""",
+	Global.CardEnum.PLANT_ONION: 
+"""Max size: 2
+
+When harvested:
+ +3 points per tile
+ +3 if max size""",
+	Global.CardEnum.PLANT_BEET: 
+"""Max size: 1
+
+When harvested:
+ +7 points per tile""",
+	Global.CardEnum.PLACE_SPRINKLER: 
+"""Water adjacent crop beds.
+16 total charges, 1 charge spent per turn per crop""",
+	Global.CardEnum.DIG_GROUND: 
+"""Transform dirt into plantable soil""",
+	Global.CardEnum.DELETE_TILE: 
+"""Convert any tile back into dirt""",
+	Global.CardEnum.WATERING_CAN: 
+"""Water single crop bed with one charge""",
+	Global.CardEnum.SCYTHE: 
+"""Harvest crop bed. Extra points for full beds""",
+}
+
+
 func _ready():
 	set_card_type(card_type)
 	$CardTexture.material = $CardTexture.material.duplicate()
@@ -43,6 +88,7 @@ func set_card_type(_card_type):
 			card = Cards.ScytheCanCard.new()
 			
 	$CardTexture.texture = card.texture
+	$CardTexture/Description.text = CARD_TEXT[card_type]
 	
 
 func get_drag_data(_pos):
