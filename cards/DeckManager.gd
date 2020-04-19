@@ -35,12 +35,14 @@ func _init():
 func draw_cards(amount):
 	for card in hand:
 		discard_pile.append(card)
-		
+	
 	hand = []
-	for i in range(amount):
-		if draw_pile.empty():
-			replenish_draw_pile()
-		hand.append(draw_pile.pop_front())
+	while number_of_crops(hand) < 2:
+		hand = []	
+		for i in range(amount):
+			if draw_pile.empty():
+				replenish_draw_pile()
+			hand.append(draw_pile.pop_front())
 	
 	return hand
 	
@@ -49,3 +51,11 @@ func replenish_draw_pile():
 	draw_pile = discard_pile
 	draw_pile.shuffle()
 	discard_pile = []
+
+
+func number_of_crops(hand):
+	var n_crops = 0
+	for card in hand:
+		if card in crops:
+			n_crops += 1
+	return n_crops

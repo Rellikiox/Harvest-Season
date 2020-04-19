@@ -31,7 +31,7 @@ SoundManager="*res://SoundManager.tscn"
 
 [display]
 
-window/size/height=753
+window/size/height=768
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 

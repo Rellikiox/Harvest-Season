@@ -60,15 +60,6 @@ margin_right = 656.0
 margin_bottom = 192.0
 card_type = 4
 
-[node name="OpenMenu" type="Button" parent="HUD"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -112.775
-margin_top = 18.6157
-margin_right = -25.775
-margin_bottom = 38.6157
-text = "Open Menu"
-
 [node name="EndTurn" type="Button" parent="HUD"]
 anchor_left = 1.0
 anchor_top = 1.0
