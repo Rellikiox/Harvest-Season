@@ -67,9 +67,26 @@ func get_adjacent_of_same_type(target):
 	return cells
 
 
-func water_adjacent_crops(cell):
+func has_sprinkler(cell):
+	return get_cellv(cell) == Global.GroundTileEnum.SPRINKLER
+	
+	
+func trigger_sprinkler(cell):
+	var charges_left = $SprinklerUI.get_cellv(cell)
 	for _cell in get_crop_beds_around_cell(cell):
+		if charges_left == 0:
+			break
 		$Effects.increase_water(_cell)
+		charges_left -= 1
+	$SprinklerUI.set_cellv(cell, charges_left)
+
+
+func reload_sprinkler(cell, charges):
+	if not has_sprinkler(cell):
+		return
+		
+	var new_charges = min($SprinklerUI.get_cellv(cell) + charges, 15)
+	$SprinklerUI.set_cellv(cell, new_charges)	
 				
 				
 func get_crop_beds_around_cell(cell):
@@ -108,3 +125,8 @@ func water_crop_bed(cell):
 	var bed = get_adjacent_of_same_type(cell)
 	for crop in bed:
 		$Effects.increase_water(crop)
+
+
+func place_sprinkler(cell):
+	set_cellv(cell, Global.GroundTileEnum.SPRINKLER)
+	$SprinklerUI.set_cellv(cell, 15)

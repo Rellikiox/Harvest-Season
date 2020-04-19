@@ -39,13 +39,13 @@ When harvested:
  +7 points per tile""",
 	Global.CardEnum.PLACE_SPRINKLER: 
 """Water adjacent crop beds.
-16 total charges, 1 charge spent per turn per crop""",
+15 total charges, 1 charge spent per turn per crop""",
 	Global.CardEnum.DIG_GROUND: 
 """Transform dirt into plantable soil""",
 	Global.CardEnum.DELETE_TILE: 
 """Convert any tile back into dirt""",
 	Global.CardEnum.WATERING_CAN: 
-"""Water single crop bed with one charge""",
+"""Water crop bed with one charge or reload 5 charges on sprinkler""",
 	Global.CardEnum.SCYTHE: 
 """Harvest crop bed. Extra points for full beds""",
 }

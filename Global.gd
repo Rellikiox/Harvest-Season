@@ -7,7 +7,7 @@ enum CardEnum {
 }
 
 enum GroundTileEnum {EMPTY = -1, DIRT, SOIL, POTATO, ONION, PEAS, BEET, CABBAGE, SPRINKLER}
-enum EffectsEnum {EMPTY = -1, DEAD, WATER_1, WATER_2, WATER_3, WATER_FULL}
+enum EffectsEnum {EMPTY = -1, DEAD, WATER_1, WATER_2, WATER_3, WATER_4}
 enum UITileEnum {EMPTY = -1, HIGHLIGHT, INVALID}
 enum HighlightTileEnum {EMPTY = -1, HIGHLIGHT, INVALID, WATER}
 

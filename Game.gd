@@ -71,6 +71,7 @@ func init_tilemaps():
 	
 	# Clear any effects
 	$Ground/Effects.clear()
+	$Ground/SprinklerUI.clear()
 	
 	# Clear and init the ground
 	$Ground.clear()
@@ -112,7 +113,7 @@ func process_tiles():
 		Vector2(1, 0), Vector2(0, 1), Vector2(-1, 0), Vector2(0, -1)
 	]
 	for cell in $Ground.get_used_cells_by_id(GroundTiles.SPRINKLER):
-		$Ground.water_adjacent_crops(cell)
+		$Ground.trigger_sprinkler(cell)
 				
 	for cell in $Ground.get_crop_cells():
 		$Ground/Effects.decrease_water(cell)

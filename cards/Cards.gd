@@ -73,8 +73,7 @@ class PlaceSprinklerCard extends BaseCard:
 		return ground.get_cellv(cell) in [Global.GroundTileEnum.DIRT, Global.GroundTileEnum.SOIL]
 
 	func place(cell:Vector2, ground:TileMap):
-		ground.set_cellv(cell, tile)
-		ground.water_adjacent_crops(cell)
+		ground.place_sprinkler(cell)
 
 
 class DigGroundCard extends BaseCard:	
@@ -94,7 +93,7 @@ class DeleteTileCard extends BaseCard:
 	var texture = preload('res://assets/delete-card.png')
 		
 	func can_be_placed(cell:Vector2, ground:TileMap):
-		return ground.cell_has_crop(cell) or ground.get_cellv(cell) == Global.GroundTileEnum.SPRINKLER
+		return ground.cell_has_crop(cell) or ground.has_sprinkler(cell)
 
 	func place(cell:Vector2, ground:TileMap):
 		ground.destroy_cell(cell)
@@ -112,11 +111,13 @@ class WateringCanCard extends BaseCard:
 			highlight.highlight_tiles([cell], Global.HighlightTileEnum.INVALID)
 		
 	func can_be_placed(cell:Vector2, ground:TileMap):
-		return ground.cell_has_crop(cell)
+		return ground.cell_has_crop(cell) or ground.has_sprinkler(cell)
 
 	func place(cell:Vector2, ground:TileMap):
-		ground.water_crop_bed(cell)
-
+		if ground.cell_has_crop(cell):
+			ground.water_crop_bed(cell)
+		else:
+			ground.reload_sprinkler(cell, 5)
 
 
 class ScytheCanCard extends BaseCard:	

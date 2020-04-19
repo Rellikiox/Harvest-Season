@@ -11,7 +11,7 @@ var deck = {
 	Global.CardEnum.WATERING_CAN: 5,
 	Global.CardEnum.DIG_GROUND: 3,
 	Global.CardEnum.SCYTHE: 5,
-#	Global.CardEnum.DELETE_TILE: 1
+	Global.CardEnum.DELETE_TILE: 1
 }
 
 var draw_pile = []
