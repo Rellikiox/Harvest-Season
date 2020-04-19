@@ -64,6 +64,8 @@ func _on_card_drop(_position, card:Cards.BaseCard):
 	if not $Ground.is_valid_cell(cell):
 		return
 	
+	$UI.set_harvest_points(0)
+	
 	if card.can_be_placed(cell, $Ground):
 		card.place(cell, $Ground)
 		$TurnManager.card_played(card)

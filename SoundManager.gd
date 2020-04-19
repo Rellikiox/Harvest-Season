@@ -24,17 +24,17 @@ var bgm = {
 
 func play_sfx(file):
 	if file in sfx:
-		play_file(sfx[file], 'SFX')
+		play_file(sfx[file], 'SFX', $SFX)
 
 
 func play_bgm(file):
 	if file in bgm:
-		play_file(bgm[file], 'Master')
+		play_file(bgm[file], 'Master', $BGM)
 		
 
-func play_file(stream, bus):
+func play_file(stream, bus, node):
 	var player = AudioStreamPlayer.new()
-	add_child(player)
+	node.add_child(player)
 	player.bus = bus
 	player.stream = stream
 	player.play()
@@ -56,3 +56,8 @@ func get_files_in_folder(folder):
 
 	dir.list_dir_end()
 	return files
+
+
+func set_enabled(enabled):
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), not enabled)
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"), not enabled)

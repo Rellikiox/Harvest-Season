@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://ui/Card.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/HUD.gd" type="Script" id=2]
 [ext_resource path="res://assets/heart-full.png" type="Texture" id=3]
 [ext_resource path="res://ui/Game_UI.gd" type="Script" id=4]
+[ext_resource path="res://ui/UIFont_Large.tres" type="DynamicFont" id=5]
+[ext_resource path="res://ui/UIFont_Medium.tres" type="DynamicFont" id=6]
+[ext_resource path="res://ui/UIFont_Small.tres" type="DynamicFont" id=7]
+[ext_resource path="res://assets/audio-toggle-on.png" type="Texture" id=8]
 
 [node name="Game_UI" type="CanvasLayer"]
 script = ExtResource( 4 )
@@ -65,20 +69,22 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -127.095
-margin_top = -74.415
-margin_right = -40.0952
-margin_bottom = -54.415
+margin_left = -161.832
+margin_top = -79.6782
+margin_right = -21.8319
+margin_bottom = -35.6782
+custom_fonts/font = ExtResource( 5 )
 text = "End Turn"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Warning" type="Label" parent="HUD/EndTurn"]
-margin_left = -51.8434
+margin_left = -29.7382
 margin_top = -68.8666
-margin_right = 146.157
-margin_bottom = -37.8666
+margin_right = 168.262
+margin_bottom = -21.8666
+custom_fonts/font = ExtResource( 7 )
 text = "End turn early and
  lose one life"
 align = 1
@@ -89,13 +95,18 @@ __meta__ = {
 [node name="Actions" type="Label" parent="HUD"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 57.2789
-margin_top = -91.1428
-margin_right = 130.279
-margin_bottom = -60.1428
+margin_left = 36.2262
+margin_top = -199.564
+margin_right = 153.226
+margin_bottom = -79.564
+custom_fonts/font = ExtResource( 5 )
 text = "3/3
-Actions left"
+Actions 
+left"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Points" type="Label" parent="HUD"]
 anchor_left = 0.5
@@ -104,6 +115,7 @@ margin_left = -32.568
 margin_top = 21.4796
 margin_right = 35.432
 margin_bottom = 35.4796
+custom_fonts/font = ExtResource( 5 )
 text = "999 Points"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -116,6 +128,7 @@ margin_left = -32.568
 margin_top = 52.9711
 margin_right = 35.432
 margin_bottom = 66.9711
+custom_fonts/font = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -127,6 +140,7 @@ margin_left = -178.949
 margin_top = 20.0476
 margin_right = -138.949
 margin_bottom = 34.0476
+custom_fonts/font = ExtResource( 6 )
 text = "Turn 1"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -155,74 +169,94 @@ margin_right = 200.0
 margin_bottom = 64.0
 texture = ExtResource( 3 )
 
+[node name="Audio" type="CheckBox" parent="HUD"]
+margin_left = 912.633
+margin_top = 11.5789
+margin_right = 1000.63
+margin_bottom = 83.5789
+pressed = true
+icon = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Gameover" type="Control" parent="."]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -384.0
+margin_right = 512.0
+margin_bottom = 384.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Gameover" type="Label" parent="Gameover"]
+[node name="Panel" type="Panel" parent="Gameover"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -34.7839
-margin_top = -346.029
-margin_right = 39.2161
-margin_bottom = -332.029
+margin_left = -149.474
+margin_top = -98.9474
+margin_right = 150.526
+margin_bottom = 101.053
 grow_horizontal = 2
 grow_vertical = 2
-text = "Game over!"
-align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="PointLabel" type="Label" parent="Gameover"]
+[node name="Gameover" type="Label" parent="Gameover/Panel"]
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -52.9598
-margin_top = -316.112
-margin_right = 64.0402
-margin_bottom = -302.112
+margin_left = -97.0
+margin_top = 10.0
+margin_right = 97.0
+margin_bottom = 133.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Your point total is:"
+custom_fonts/font = ExtResource( 6 )
+text = "Game over!
+Your point total is:"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Points" type="Label" parent="Gameover"]
+[node name="Points" type="Label" parent="Gameover/Panel"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -52.9598
-margin_top = -280.655
-margin_right = 64.0402
-margin_bottom = -266.655
+margin_left = -58.5
+margin_top = -19.0
+margin_right = 58.5
+margin_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 2
+custom_fonts/font = ExtResource( 5 )
 text = "999"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Restart" type="Button" parent="Gameover"]
+[node name="Restart" type="Button" parent="Gameover/Panel"]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -4.89197
-margin_top = -254.876
-margin_right = 7.10803
-margin_bottom = -234.876
+anchor_bottom = 1.0
+margin_left = -58.0526
+margin_top = -52.4211
+margin_right = 55.9474
+margin_bottom = -8.42108
+custom_fonts/font = ExtResource( 5 )
 text = "Restart"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="pressed" from="HUD/EndTurn" to="." method="_on_End_Turn_pressed"]
-[connection signal="pressed" from="Gameover/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="toggled" from="HUD/Audio" to="." method="_on_Audio_toggled"]
+[connection signal="pressed" from="Gameover/Panel/Restart" to="." method="_on_Restart_pressed"]

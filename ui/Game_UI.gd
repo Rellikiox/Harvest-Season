@@ -5,6 +5,9 @@ var UICard = preload('res://ui/Card.tscn')
 var HeartFull = preload('res://assets/heart-full.png')
 var HeartEmpty = preload('res://assets/heart-empty.png')
 
+var AudioOn = preload("res://assets/audio-toggle-on.png")
+var AudioOff = preload("res://assets/audio-toggle-off.png")
+
 signal drag_position
 signal drop_position
 
@@ -35,7 +38,7 @@ func set_harvest_points(points):
 
 
 func set_actions(left, total):
-	$HUD/Actions.text = '%d/%d\nActions left' % [left, total]
+	$HUD/Actions.text = '%d/%d\nActions\nleft' % [left, total]
 	
 
 func set_turns(turns):
@@ -77,6 +80,11 @@ func set_n_lives(n_lives):
 
 func enable_end_turn(enabled=true):
 	$HUD/EndTurn/Warning.visible = not enabled
+
+
+func _on_Audio_toggled(button_pressed):
+	$HUD/Audio.icon = AudioOn if button_pressed else AudioOff
+	SoundManager.set_enabled(button_pressed)
 	
 
 # Gameover
@@ -89,7 +97,7 @@ func display_gameover(final_points):
 	$Gameover.visible = true
 	$HUD.visible = false
 	
-	$Gameover/Points.text = str(final_points)
+	$Gameover/Panel/Points.text = str(final_points)
 	
 
 func _on_Restart_pressed():

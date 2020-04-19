@@ -137,9 +137,8 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 script = ExtResource( 7 )
 
 [node name="Camera2D" type="Camera2D" parent="Ground"]
-position = Vector2( 220.524, 224.82 )
+position = Vector2( 237.712, 288.662 )
 current = true
-editor_draw_screen = false
 
 [node name="Effects" type="TileMap" parent="Ground"]
 tile_set = ExtResource( 5 )
