@@ -4,6 +4,9 @@ class_name Cards
 
 
 class BaseCard:	
+	func on_tile_hover(cell:Vector2, ground:TileMap, highlight:TileMap):
+		pass
+		
 	func can_be_placed(cell:Vector2, ground:TileMap):
 		pass
 		
@@ -16,6 +19,12 @@ class PlantPotatoCard extends BaseCard:
 	var icon = preload('res://assets/potato-icon.png')
 	var texture = preload('res://assets/potato-card.png')
 	
+	func on_tile_hover(cell:Vector2, ground:TileMap, highlight:TileMap):
+		if can_be_placed(cell, ground):
+			highlight.highlight_tiles([cell])
+		else:
+			highlight.highlight_tiles([cell], Global.HighlightTileEnum.INVALID)
+		
 	func can_be_placed(cell:Vector2, ground:TileMap):
 		return ground.get_cellv(cell) == Global.GroundTileEnum.SOIL
 
@@ -29,6 +38,12 @@ class PlantPeasCard extends BaseCard:
 	var icon = preload('res://assets/peas-icon.png')
 	var texture = preload('res://assets/peas-card.png')
 	
+	func on_tile_hover(cell:Vector2, ground:TileMap, highlight:TileMap):
+		if can_be_placed(cell, ground):
+			highlight.highlight_tiles([cell])
+		else:
+			highlight.highlight_tiles([cell], Global.HighlightTileEnum.INVALID)
+		
 	func can_be_placed(cell:Vector2, ground:TileMap):
 		return ground.get_cellv(cell) == Global.GroundTileEnum.SOIL
 
@@ -42,6 +57,12 @@ class PlantCabbageCard extends BaseCard:
 	var icon = preload('res://assets/cabbage-icon.png')
 	var texture = preload('res://assets/cabbage-card.png')
 	
+	func on_tile_hover(cell:Vector2, ground:TileMap, highlight:TileMap):
+		if can_be_placed(cell, ground):
+			highlight.highlight_tiles([cell])
+		else:
+			highlight.highlight_tiles([cell], Global.HighlightTileEnum.INVALID)
+		
 	func can_be_placed(cell:Vector2, ground:TileMap):
 		return ground.get_cellv(cell) == Global.GroundTileEnum.SOIL
 
@@ -56,6 +77,12 @@ class PlantOnionCard extends BaseCard:
 	var icon = preload('res://assets/onion-icon.png')
 	var texture = preload('res://assets/onion-card.png')
 	
+	func on_tile_hover(cell:Vector2, ground:TileMap, highlight:TileMap):
+		if can_be_placed(cell, ground):
+			highlight.highlight_tiles([cell])
+		else:
+			highlight.highlight_tiles([cell], Global.HighlightTileEnum.INVALID)
+		
 	func can_be_placed(cell:Vector2, ground:TileMap):
 		return ground.get_cellv(cell) == Global.GroundTileEnum.SOIL
 
@@ -69,6 +96,12 @@ class PlantBeetCard extends BaseCard:
 	var icon = preload('res://assets/beet-icon.png')
 	var texture = preload('res://assets/beet-card.png')
 	
+	func on_tile_hover(cell:Vector2, ground:TileMap, highlight:TileMap):
+		if can_be_placed(cell, ground):
+			highlight.highlight_tiles([cell])
+		else:
+			highlight.highlight_tiles([cell], Global.HighlightTileEnum.INVALID)
+		
 	func can_be_placed(cell:Vector2, ground:TileMap):
 		return ground.get_cellv(cell) == Global.GroundTileEnum.SOIL
 
@@ -82,6 +115,12 @@ class PlaceSprinklerCard extends BaseCard:
 	var icon = preload('res://assets/sprinkler-icon.png')
 	var texture = preload('res://assets/sprinkler-card.png')
 	
+	func on_tile_hover(cell:Vector2, ground:TileMap, highlight:TileMap):
+		if can_be_placed(cell, ground):
+			highlight.highlight_tiles([cell])
+		else:
+			highlight.highlight_tiles([cell], Global.HighlightTileEnum.INVALID)
+		
 	func can_be_placed(cell:Vector2, ground:TileMap):
 		return ground.get_cellv(cell) in [Global.GroundTileEnum.DIRT, Global.GroundTileEnum.SOIL]
 
@@ -95,6 +134,12 @@ class DigGroundCard extends BaseCard:
 	var icon = preload('res://assets/dig-icon.png')
 	var texture = preload('res://assets/dig-card.png')
 	
+	func on_tile_hover(cell:Vector2, ground:TileMap, highlight:TileMap):
+		if can_be_placed(cell, ground):
+			highlight.highlight_tiles([cell])
+		else:
+			highlight.highlight_tiles([cell], Global.HighlightTileEnum.INVALID)
+		
 	func can_be_placed(cell:Vector2, ground:TileMap):
 		return ground.get_cellv(cell) == Global.GroundTileEnum.DIRT
 
@@ -107,6 +152,12 @@ class DeleteTileCard extends BaseCard:
 	var icon = preload('res://assets/delete-icon.png')
 	var texture = preload('res://assets/delete-card.png')
 	
+	func on_tile_hover(cell:Vector2, ground:TileMap, highlight:TileMap):
+		if can_be_placed(cell, ground):
+			highlight.highlight_tiles([cell])
+		else:
+			highlight.highlight_tiles([cell], Global.HighlightTileEnum.INVALID)
+		
 	func can_be_placed(cell:Vector2, ground:TileMap):
 		return ground.cell_has_crop(cell) or ground.get_cellv(cell) == Global.GroundTileEnum.SPRINKLER
 
@@ -120,6 +171,12 @@ class WateringCanCard extends BaseCard:
 	var icon = preload('res://assets/wateringcan-icon.png')
 	var texture = preload('res://assets/wateringcan-card.png')
 	
+	func on_tile_hover(cell:Vector2, ground:TileMap, highlight:TileMap):
+		if can_be_placed(cell, ground):
+			highlight.highlight_tiles([cell])
+		else:
+			highlight.highlight_tiles([cell], Global.HighlightTileEnum.INVALID)
+		
 	func can_be_placed(cell:Vector2, ground:TileMap):
 		return ground.cell_has_crop(cell)
 
@@ -133,6 +190,13 @@ class ScytheCanCard extends BaseCard:
 	var icon = preload('res://assets/scythe-icon.png')
 	var texture = preload('res://assets/scythe-card.png')
 	
+	func on_tile_hover(cell:Vector2, ground:TileMap, highlight:TileMap):
+		if can_be_placed(cell, ground):
+			var crops = ground.get_adjacent_of_same_type(cell)
+			highlight.highlight_tiles(crops)
+		else:
+			highlight.highlight_tiles([cell], Global.HighlightTileEnum.INVALID)
+		
 	func can_be_placed(cell:Vector2, ground:TileMap):
 		return ground.cell_has_crop(cell)
 

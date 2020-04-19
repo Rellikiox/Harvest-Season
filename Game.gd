@@ -48,11 +48,7 @@ func _on_card_drag(_position, card):
 	if not $Ground.is_valid_cell(cell):
 		return
 	
-	$Ground/UI.clear()
-	if card.can_be_placed(cell, $Ground):
-		$Ground/UI.set_cellv(cell, UITiles.HIGHLIGHT)
-	else:
-		$Ground/UI.set_cellv(cell, UITiles.INVALID)
+	card.on_tile_hover(cell, $Ground, $Ground/Highlight)
 
 
 func _on_card_drop(_position, card:Cards.BaseCard):
@@ -103,9 +99,7 @@ func highlight_crops():
 	var cell = $Ground.world_to_map($Ground.get_local_mouse_position())
 	if $Ground.cell_has_crop(cell):
 		var adjacent_crops = $Ground.get_adjacent_of_same_type(cell)
-		for _cell in adjacent_crops:
-			$Ground/Highlight.set_cellv(_cell, HighlightTiles.HIGHLIGHT)
-			$Ground/Highlight.update_bitmask_area(_cell)
+		$Ground/Highlight.highlight_tiles(adjacent_crops)
 	
 
 # Gameplay Methods
