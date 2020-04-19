@@ -113,3 +113,15 @@ class DeleteTileCard extends BaseCard:
 	func place(cell:Vector2, ground:TileMap, effects:TileMap):
 		ground.set_cellv(cell, tile)
 		effects.set_cellv(cell, Global.EffectsEnum.EMPTY)
+
+
+
+class WateringCanCard extends BaseCard:	
+	var icon = preload('res://assets/wateringcan-icon.png')
+	var texture = preload('res://assets/wateringcan-card.png')
+	
+	func can_be_placed(cell:Vector2, ground:TileMap):
+		return ground.cell_has_crop(cell)
+
+	func place(cell:Vector2, ground:TileMap, effects:TileMap):
+		effects.increase_water(cell)
