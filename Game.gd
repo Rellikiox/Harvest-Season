@@ -59,7 +59,7 @@ func _on_card_drop(_position, card:Cards.BaseCard):
 		return
 	
 	if card.can_be_placed(cell, $Ground):
-		card.place(cell, $Ground, $Ground/Effects)
+		card.place(cell, $Ground)
 		$TurnManager.card_played(card)
 	
 	
@@ -109,7 +109,7 @@ func process_tiles():
 		Vector2(1, 0), Vector2(0, 1), Vector2(-1, 0), Vector2(0, -1)
 	]
 	for cell in $Ground.get_used_cells_by_id(GroundTiles.SPRINKLER):
-		$Ground.water_adjacent(cell)
+		$Ground.water_adjacent_crops(cell)
 				
 	for cell in $Ground.get_crop_cells():
 		$Ground/Effects.decrease_water(cell)

@@ -55,7 +55,7 @@ func get_adjacent_of_same_type(target):
 	return cells
 
 
-func water_adjacent(cell):
+func water_adjacent_crops(cell):
 	var neighbours = get_neighbours(cell)
 	for neighbour_cell in neighbours:
 		if cell_has_crop(neighbour_cell):
@@ -74,3 +74,17 @@ func harvest_crops(cells):
 		$Effects.set_cellv(cell, Global.EffectsEnum.EMPTY)
 		
 	emit_signal('crops_harvested', type, len(cells))
+
+
+func plant_crop(cell, crop):
+	set_cellv(cell, crop)
+	$Effects.set_cellv(cell, Global.EffectsEnum.WATER_3)
+
+
+func destroy_cell(cell):
+	set_cellv(cell, Global.GroundTileEnum.DIRT)
+	$Effects.set_cellv(cell, Global.EffectsEnum.EMPTY)
+
+
+func water_single_crop(cell):
+	$Effects.increase_water(cell)
