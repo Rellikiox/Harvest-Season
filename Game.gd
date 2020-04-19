@@ -100,6 +100,9 @@ func highlight_crops():
 	if $Ground.cell_has_crop(cell):
 		var adjacent_crops = $Ground.get_adjacent_of_same_type(cell)
 		$Ground/Highlight.highlight_tiles(adjacent_crops)
+	elif $Ground.cell_has(cell, GroundTiles.SPRINKLER):
+		var crop_beds = $Ground.get_crop_beds_around_cell(cell)
+		$Ground/Highlight.highlight_tiles(crop_beds, HighlightTiles.WATER)
 	
 
 # Gameplay Methods

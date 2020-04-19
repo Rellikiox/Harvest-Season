@@ -23,6 +23,10 @@ func cell_has_crop(cell:Vector2):
 	return get_cellv(cell) in Crops
 
 
+func cell_has(cell:Vector2, tile:int):
+	return get_cellv(cell) == tile
+
+
 func get_crop_cells():
 	var cells = []
 	for crop_type in Crops:
@@ -36,10 +40,18 @@ func get_neighbours(cell):
 		if is_valid_cell(cell + offset):
 			cells.append(cell + offset)
 	return cells
+	
+	
+func potential_crop_bed(target, crop):
+	var prev_value = get_cellv(target)
+	set_cellv(target, crop)
+	var crop_bed = get_adjacent_of_same_type(target)
+	set_cellv(target, prev_value)
+	return crop_bed
 
 
 func get_adjacent_of_same_type(target):
-	var type = get_cellv(target)
+	var crop_type = get_cellv(target)
 	var open_set = [target]
 	var visited = []
 	var cells = []
@@ -48,7 +60,7 @@ func get_adjacent_of_same_type(target):
 		if cell in visited:
 			continue
 		visited.append(cell)
-		if get_cellv(cell) == type and $Effects.get_cellv(cell) != Global.EffectsEnum.DEAD:
+		if get_cellv(cell) == crop_type and $Effects.get_cellv(cell) != Global.EffectsEnum.DEAD:
 			cells.append(cell)
 			for _cell in get_neighbours(cell):
 				open_set.append(_cell)
@@ -56,12 +68,18 @@ func get_adjacent_of_same_type(target):
 
 
 func water_adjacent_crops(cell):
+	for _cell in get_crop_beds_around_cell(cell):
+		$Effects.increase_water(_cell)
+				
+				
+func get_crop_beds_around_cell(cell):
+	var cells = []
 	var neighbours = get_neighbours(cell)
 	for neighbour_cell in neighbours:
 		if cell_has_crop(neighbour_cell):
 			var crop_segment = get_adjacent_of_same_type(neighbour_cell)
-			for _cell in crop_segment:
-				$Effects.increase_water(_cell)
+			cells += crop_segment
+	return cells
 
 
 func harvest_crops(cells):

@@ -58,7 +58,7 @@ func get_drag_data(_pos):
 
 func _on_CardTexture_mouse_entered():
 	if interactions_enabled:
-		$Tween.interpolate_property($CardTexture, 'margin_top', $CardTexture.margin_top, -10, 0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+		$Tween.interpolate_property($CardTexture, 'margin_top', $CardTexture.margin_top, -64, 0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 		$Tween.start()
 
 

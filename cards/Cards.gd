@@ -18,8 +18,12 @@ class BaseCard:
 		
 
 class BasePlantCard extends BaseCard:		
+	
 	func can_be_placed(cell:Vector2, ground:TileMap):
-		return ground.get_cellv(cell) == Global.GroundTileEnum.SOIL
+		return (
+			ground.get_cellv(cell) == Global.GroundTileEnum.SOIL and 
+			len(ground.potential_crop_bed(cell, self.tile)) <= self.MAX_CROP_BED_SIZE
+		)
 
 	func place(cell:Vector2, ground:TileMap):
 		ground.plant_crop(cell, self.tile)
@@ -27,30 +31,35 @@ class BasePlantCard extends BaseCard:
 
 class PlantPotatoCard extends BasePlantCard:	
 	var tile = Global.GroundTileEnum.POTATO
+	var MAX_CROP_BED_SIZE = 3
 	var icon = preload('res://assets/potato-icon.png')
 	var texture = preload('res://assets/potato-card.png')
 	
 
 class PlantPeasCard extends BasePlantCard:	
 	var tile = Global.GroundTileEnum.PEAS
+	var MAX_CROP_BED_SIZE = 5
 	var icon = preload('res://assets/peas-icon.png')
 	var texture = preload('res://assets/peas-card.png')
 
 
 class PlantCabbageCard extends BasePlantCard:	
 	var tile = Global.GroundTileEnum.CABBAGE
+	var MAX_CROP_BED_SIZE = 3
 	var icon = preload('res://assets/cabbage-icon.png')
 	var texture = preload('res://assets/cabbage-card.png')
 
 
 class PlantOnionCard extends BasePlantCard:	
 	var tile = Global.GroundTileEnum.ONION
+	var MAX_CROP_BED_SIZE = 2
 	var icon = preload('res://assets/onion-icon.png')
 	var texture = preload('res://assets/onion-card.png')
 	
 
 class PlantBeetCard extends BasePlantCard:	
 	var tile = Global.GroundTileEnum.BEET
+	var MAX_CROP_BED_SIZE = 1
 	var icon = preload('res://assets/beet-icon.png')
 	var texture = preload('res://assets/beet-card.png')
 	

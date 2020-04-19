@@ -31,6 +31,8 @@ Global="*res://Global.gd"
 [display]
 
 window/size/height=753
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [importer_defaults]
 

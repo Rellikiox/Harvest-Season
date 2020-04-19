@@ -1,41 +1,27 @@
 extends Node
 
 
-var deck = [
-	Global.CardEnum.PLANT_BEET,
-	Global.CardEnum.PLANT_BEET,
-	Global.CardEnum.PLANT_BEET,
-	Global.CardEnum.PLANT_PEAS,
-	Global.CardEnum.PLANT_PEAS,
-	Global.CardEnum.PLANT_PEAS,
-	Global.CardEnum.PLANT_CABBAGE,
-	Global.CardEnum.PLANT_CABBAGE,
-	Global.CardEnum.PLANT_CABBAGE,
-	Global.CardEnum.PLANT_ONION,
-	Global.CardEnum.PLANT_ONION,
-	Global.CardEnum.PLANT_ONION,
-	Global.CardEnum.PLANT_POTATO,
-	Global.CardEnum.PLANT_POTATO,
-	Global.CardEnum.PLANT_POTATO,
-	Global.CardEnum.PLACE_SPRINKLER,
-	Global.CardEnum.WATERING_CAN,
-	Global.CardEnum.WATERING_CAN,
-	Global.CardEnum.WATERING_CAN,
-	Global.CardEnum.WATERING_CAN,
-	Global.CardEnum.WATERING_CAN,
-	Global.CardEnum.DIG_GROUND,
-	Global.CardEnum.DIG_GROUND,
-	Global.CardEnum.DIG_GROUND,
-	Global.CardEnum.SCYTHE
-#	Global.CardEnum.DELETE_TILE
-]
+var deck = {
+	Global.CardEnum.PLANT_BEET: 3,
+	Global.CardEnum.PLANT_PEAS: 3,
+	Global.CardEnum.PLANT_CABBAGE: 3,
+	Global.CardEnum.PLANT_ONION: 3,
+	Global.CardEnum.PLANT_POTATO: 3,
+	Global.CardEnum.PLACE_SPRINKLER: 1,
+	Global.CardEnum.WATERING_CAN: 5,
+	Global.CardEnum.DIG_GROUND: 3,
+	Global.CardEnum.SCYTHE: 5,
+#	Global.CardEnum.DELETE_TILE: 1
+}
 
 var draw_pile = []
 var hand = []
 var discard_pile = []
 
 func _init():
-	draw_pile = deck.duplicate()
+	for card in deck:
+		for count in range(deck[card]):
+			draw_pile.append(card)
 	draw_pile.shuffle()
 
 
