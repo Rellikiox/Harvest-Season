@@ -38,6 +38,8 @@ format = 1
 tile_set = ExtResource( 9 )
 format = 1
 
+[node name="Sprites" type="YSort" parent="Ground"]
+
 [node name="UI" parent="." instance=ExtResource( 3 )]
 
 [node name="TurnManager" parent="." instance=ExtResource( 6 )]

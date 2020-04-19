@@ -45,6 +45,7 @@ func get_drag_data(_pos):
 	if interactions_enabled:
 		var icon = TextureRect.new()
 		icon.texture = card.icon
+		icon.rect_scale = Vector2(0.5, 0.5)
 		set_drag_preview(icon)
 		return card
 	else:

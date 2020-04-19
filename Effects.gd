@@ -9,7 +9,7 @@ var water_offsets = [
 
 func increase_water(cell):
 	var current_level = get_cellv(cell)
-	if current_level >= Global.EffectsEnum.WATER_1 and current_level <= Global.EffectsEnum.WATER_FULL:
+	if current_level >= Global.EffectsEnum.WATER_1 and current_level < Global.EffectsEnum.WATER_FULL:
 		set_cellv(cell, current_level + 1)
 
 
