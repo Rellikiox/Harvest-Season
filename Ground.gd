@@ -76,8 +76,9 @@ func trigger_sprinkler(cell):
 	for _cell in get_sprinkler_targets(cell):
 		if charges_left == 0:
 			break
-		$Effects.increase_water(_cell)
-		charges_left -= 1
+		if $Effects.needs_watering(_cell):
+			$Effects.increase_water(_cell)
+			charges_left -= 1
 	$SprinklerUI.set_cellv(cell, charges_left)
 
 
@@ -130,6 +131,7 @@ func plant_crop(cell, crop):
 func destroy_cell(cell):
 	set_cellv(cell, Global.GroundTileEnum.DIRT)
 	$Effects.set_cellv(cell, Global.EffectsEnum.EMPTY)
+	$SprinklerUI.set_cellv(cell, Global.EffectsEnum.EMPTY)
 
 
 func water_crop_bed(cell):
@@ -142,6 +144,13 @@ func place_sprinkler(cell):
 	set_cellv(cell, Global.GroundTileEnum.SPRINKLER)
 	$SprinklerUI.set_cellv(cell, 15)
 
+
+func sprinkler_full(cell):
+	return $SprinklerUI.get_cellv(cell) == 15
+
+
+func needs_watering(cell):
+	return $Effects.needs_watering(cell)
 
 
 class DistanceSorter:

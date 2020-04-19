@@ -33,31 +33,31 @@ __meta__ = {
 
 [node name="Card" parent="HUD/CardContainer" instance=ExtResource( 1 )]
 margin_right = 128.0
-margin_bottom = 128.0
+margin_bottom = 192.0
 card_type = 5
 
 [node name="Card2" parent="HUD/CardContainer" instance=ExtResource( 1 )]
 margin_left = 132.0
 margin_right = 260.0
-margin_bottom = 128.0
+margin_bottom = 192.0
 card_type = 3
 
 [node name="Card3" parent="HUD/CardContainer" instance=ExtResource( 1 )]
 margin_left = 264.0
 margin_right = 392.0
-margin_bottom = 128.0
+margin_bottom = 192.0
 card_type = 1
 
 [node name="Card4" parent="HUD/CardContainer" instance=ExtResource( 1 )]
 margin_left = 396.0
 margin_right = 524.0
-margin_bottom = 128.0
+margin_bottom = 192.0
 card_type = 2
 
 [node name="Card5" parent="HUD/CardContainer" instance=ExtResource( 1 )]
 margin_left = 528.0
 margin_right = 656.0
-margin_bottom = 128.0
+margin_bottom = 192.0
 card_type = 4
 
 [node name="OpenMenu" type="Button" parent="HUD"]
@@ -102,6 +102,21 @@ margin_top = 21.4796
 margin_right = 35.432
 margin_bottom = 35.4796
 text = "999 Points"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HarvestPoints" type="Label" parent="HUD"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -32.568
+margin_top = 52.9711
+margin_right = 35.432
+margin_bottom = 66.9711
+text = "+9 points"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Turns" type="Label" parent="HUD"]
 anchor_left = 0.5

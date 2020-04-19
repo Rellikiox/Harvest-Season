@@ -17,7 +17,7 @@ var deck = {
 	Global.CardEnum.PLACE_SPRINKLER: 1,
 	Global.CardEnum.WATERING_CAN: 5,
 	Global.CardEnum.DIG_GROUND: 3,
-	Global.CardEnum.SCYTHE: 5,
+	Global.CardEnum.HARVEST_CROP: 5,
 	Global.CardEnum.DELETE_TILE: 1
 }
 

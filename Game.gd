@@ -49,6 +49,12 @@ func _on_card_drag(_position, card):
 		return
 	
 	card.on_tile_hover(cell, $Ground, $Ground/Highlight)
+	if card is Cards.HarvestCropCard and $Ground.cell_has_crop(cell):
+		var crop_type = $Ground.get_cellv(cell)
+		var amount = len($Ground.get_adjacent_of_same_type(cell))
+		$UI.set_harvest_points($TurnManager.get_harvest_points(crop_type, amount))
+	else:
+		$UI.set_harvest_points(0)
 
 
 func _on_card_drop(_position, card:Cards.BaseCard):
@@ -61,6 +67,8 @@ func _on_card_drop(_position, card:Cards.BaseCard):
 	if card.can_be_placed(cell, $Ground):
 		card.place(cell, $Ground)
 		$TurnManager.card_played(card)
+	else:
+		SoundManager.play_se('error.wav')
 	
 	
 # Tileset management	

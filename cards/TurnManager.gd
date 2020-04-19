@@ -11,7 +11,7 @@ var Deck = null
 
 var actions_left = 0
 var lives_left = 0
-var points = 0
+var total_points = 0
 var turns = 0
 
 
@@ -55,8 +55,8 @@ func trigger_turn_start():
 	
 	
 func _on_crop_harvested(type, amount):
-	points += pow(amount, 2)
-	UI.set_points(points)
+	total_points += get_harvest_points(type, amount)
+	UI.set_points(total_points)
 	
 	
 func _on_crop_death():
@@ -67,5 +67,13 @@ func _on_crop_death():
 		
 		
 func trigger_game_over():
-	UI.display_gameover(points)
+	UI.display_gameover(total_points)
 	Game.finished = true
+
+
+func get_harvest_points(crop, amount):
+	var crop_data = Global.CROP_POINTS[crop]
+	var points = amount * crop_data['points_per_crop']
+	if amount == crop_data['max']:
+		points += crop_data['points_if_max']
+	return points

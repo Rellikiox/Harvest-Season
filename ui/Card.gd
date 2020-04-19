@@ -12,8 +12,8 @@ const CARD_TEXT = {
 """Max size: 3
 
 When harvested:
- +2 points per tile
- +3 if max size""",
+ +%s points per tile
+ +%s if max size""",
 	Global.CardEnum.PLANT_PEAS: 
 """Max size: 5
 
@@ -46,7 +46,7 @@ When harvested:
 """Convert any tile back into dirt""",
 	Global.CardEnum.WATERING_CAN: 
 """Water crop bed with one charge or reload 5 charges on sprinkler""",
-	Global.CardEnum.SCYTHE: 
+	Global.CardEnum.HARVEST_CROP: 
 """Harvest crop bed. Extra points for full beds""",
 }
 
@@ -84,8 +84,8 @@ func set_card_type(_card_type):
 			card = Cards.DeleteTileCard.new()
 		Global.CardEnum.WATERING_CAN:
 			card = Cards.WateringCanCard.new()
-		Global.CardEnum.SCYTHE:
-			card = Cards.ScytheCanCard.new()
+		Global.CardEnum.HARVEST_CROP:
+			card = Cards.HarvestCropCard.new()
 			
 	$CardTexture.texture = card.texture
 	$CardTexture/Description.text = CARD_TEXT[card_type]

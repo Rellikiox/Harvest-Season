@@ -27,6 +27,13 @@ func set_points(points):
 	$HUD/Points.text = '%d Points' % points
 
 
+func set_harvest_points(points):
+	if points:
+		$HUD/HarvestPoints.text = '(+%d points)' % points
+	else:
+		$HUD/HarvestPoints.text = ''
+
+
 func set_actions(left, total):
 	$HUD/Actions.text = '%d/%d\nActions left' % [left, total]
 	

@@ -17,7 +17,6 @@ class BaseCard:
 		
 
 class BasePlantCard extends BaseCard:		
-	
 	var sounds = [
 		'plant_1.wav', 'plant_2.wav', 'plant_3.wav', 'plant_4.wav', 
 		'plant_5.wav', 'plant_6.wav', 'plant_7.wav', 'plant_8.wav', 
@@ -119,7 +118,10 @@ class WateringCanCard extends BaseCard:
 			highlight.highlight_tiles([cell], Global.HighlightTileEnum.INVALID)
 		
 	func can_be_placed(cell:Vector2, ground:TileMap):
-		return ground.cell_has_crop(cell) or ground.has_sprinkler(cell)
+		return (
+			ground.cell_has_crop(cell) and ground.needs_watering(cell) or
+			ground.has_sprinkler(cell) and not ground.sprinkler_full(cell)
+		)
 
 	func place(cell:Vector2, ground:TileMap):
 		if ground.cell_has_crop(cell):
@@ -130,7 +132,7 @@ class WateringCanCard extends BaseCard:
 			SoundManager.play_se('refil_sprinkler.wav')
 
 
-class ScytheCanCard extends BaseCard:	
+class HarvestCropCard extends BaseCard:	
 	var icon = preload('res://assets/scythe-icon.png')
 	var texture = preload('res://assets/scythe-card.png')
 	

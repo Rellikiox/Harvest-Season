@@ -8,9 +8,8 @@ var water_offsets = [
 
 
 func increase_water(cell):
-	var current_level = get_cellv(cell)
-	if current_level >= Global.EffectsEnum.WATER_1 and current_level < Global.EffectsEnum.WATER_4:
-		set_cellv(cell, current_level + 1)
+	if needs_watering(cell):
+		set_cellv(cell, get_cellv(cell) + 1)
 
 
 func decrease_water(cell):
@@ -22,3 +21,6 @@ func decrease_water(cell):
 			emit_signal('crop_death')
 			
 			
+func needs_watering(cell):
+	var current_level = get_cellv(cell)
+	return current_level >= Global.EffectsEnum.WATER_1 and current_level < Global.EffectsEnum.WATER_4
