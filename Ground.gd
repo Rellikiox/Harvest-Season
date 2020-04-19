@@ -73,7 +73,7 @@ func has_sprinkler(cell):
 	
 func trigger_sprinkler(cell):
 	var charges_left = $SprinklerUI.get_cellv(cell)
-	for _cell in get_crop_beds_around_cell(cell):
+	for _cell in get_sprinkler_targets(cell):
 		if charges_left == 0:
 			break
 		$Effects.increase_water(_cell)
@@ -87,7 +87,16 @@ func reload_sprinkler(cell, charges):
 		
 	var new_charges = min($SprinklerUI.get_cellv(cell) + charges, 15)
 	$SprinklerUI.set_cellv(cell, new_charges)	
-				
+	
+	
+func get_sprinkler_targets(cell):
+	var sprinkler_level = $SprinklerUI.get_cellv(cell)
+	var cells_to_water = get_crop_beds_around_cell(cell)
+	cells_to_water.sort_custom(DistanceSorter.new(cell), 'sort')
+	if len(cells_to_water) > sprinkler_level:
+		cells_to_water = cells_to_water.slice(0, sprinkler_level - 1)
+	return cells_to_water
+	
 				
 func get_crop_beds_around_cell(cell):
 	var cells = []
@@ -130,3 +139,13 @@ func water_crop_bed(cell):
 func place_sprinkler(cell):
 	set_cellv(cell, Global.GroundTileEnum.SPRINKLER)
 	$SprinklerUI.set_cellv(cell, 15)
+
+
+
+class DistanceSorter:
+	var origin
+	func _init(_origin):
+		origin = _origin
+		
+	func sort(a, b):
+		return a.distance_squared_to(origin) < b.distance_squared_to(origin)

@@ -17,7 +17,6 @@ func _ready():
 	$UI.connect('end_turn_button', $TurnManager, 'end_turn')
 	$Ground/Effects.connect('crop_death', $TurnManager, '_on_crop_death')
 	$Ground.connect('crops_harvested', $TurnManager, '_on_crop_harvested')
-	
 	init_tilemaps()
 	$TurnManager.init(self, $UI)
 
@@ -102,7 +101,7 @@ func highlight_crops():
 		var adjacent_crops = $Ground.get_adjacent_of_same_type(cell)
 		$Ground/Highlight.highlight_tiles(adjacent_crops)
 	elif $Ground.cell_has(cell, GroundTiles.SPRINKLER):
-		var crop_beds = $Ground.get_crop_beds_around_cell(cell)
+		var crop_beds = $Ground.get_sprinkler_targets(cell)
 		$Ground/Highlight.highlight_tiles(crop_beds, HighlightTiles.WATER)
 	
 
