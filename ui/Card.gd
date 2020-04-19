@@ -39,6 +39,8 @@ func set_card_type(_card_type):
 			card = Cards.DeleteTileCard.new()
 		Global.CardEnum.WATERING_CAN:
 			card = Cards.WateringCanCard.new()
+		Global.CardEnum.SCYTHE:
+			card = Cards.ScytheCanCard.new()
 			
 	$CardTexture.texture = card.texture
 	

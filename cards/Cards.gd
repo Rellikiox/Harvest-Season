@@ -125,3 +125,17 @@ class WateringCanCard extends BaseCard:
 
 	func place(cell:Vector2, ground:TileMap, effects:TileMap):
 		effects.increase_water(cell)
+
+
+
+
+class ScytheCanCard extends BaseCard:	
+	var icon = preload('res://assets/scythe-icon.png')
+	var texture = preload('res://assets/scythe-card.png')
+	
+	func can_be_placed(cell:Vector2, ground:TileMap):
+		return ground.cell_has_crop(cell)
+
+	func place(cell:Vector2, ground:TileMap, effects:TileMap):
+		var crops = ground.get_adjacent_of_same_type(cell)
+		ground.harvest_crops(crops)

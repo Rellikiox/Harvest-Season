@@ -11,10 +11,12 @@ var finished = false
 # Engine Callbacks
 
 func _ready():
+	randomize()
 	$UI.connect('drag_position', self, '_on_card_drag')
 	$UI.connect('drop_position', self, '_on_card_drop')
 	$UI.connect('end_turn_button', $TurnManager, 'end_turn')
 	$Ground/Effects.connect('crop_death', $TurnManager, '_on_crop_death')
+	$Ground.connect('crops_harvested', $TurnManager, '_on_crop_harvested')
 	
 	init_tilemaps()
 	$TurnManager.init(self, $UI)
@@ -23,7 +25,6 @@ func _ready():
 func _physics_process(delta):
 	if finished:
 		return
-	$UI.set_points(calculate_points())
 	highlight_crops()
 
 
@@ -86,7 +87,7 @@ func init_tilemaps():
 			$Ground.set_cell(x, y, GroundTiles.SOIL)
 			
 	var extra_soil_placed = 0
-	while extra_soil_placed <= 8:
+	while extra_soil_placed <= 13:
 		var x = randi() % 7
 		var y = randi() % 7
 		if $Ground.get_cell(x, y) == GroundTiles.DIRT:
@@ -108,15 +109,6 @@ func highlight_crops():
 	
 
 # Gameplay Methods
-
-func calculate_points():
-	var potatoes = len($Ground.get_used_cells_by_id(GroundTiles.POTATO))
-	var onions = len($Ground.get_used_cells_by_id(GroundTiles.ONION))
-	var peas = len($Ground.get_used_cells_by_id(GroundTiles.PEAS))
-	var beets = len($Ground.get_used_cells_by_id(GroundTiles.BEET))
-	var cabbage = len($Ground.get_used_cells_by_id(GroundTiles.CABBAGE))
-	return potatoes + onions + peas + beets + cabbage
-
 
 func process_tiles():
 	var water_offsets = [

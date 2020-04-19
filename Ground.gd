@@ -1,5 +1,7 @@
 extends TileMap
 
+signal crops_harvested
+
 
 var Crops = [
 	Global.GroundTileEnum.POTATO,
@@ -60,3 +62,15 @@ func water_adjacent(cell):
 			var crop_segment = get_adjacent_of_same_type(neighbour_cell)
 			for _cell in crop_segment:
 				$Effects.increase_water(_cell)
+
+
+func harvest_crops(cells):
+	if len(cells) == 0:
+		return
+		
+	var type = get_cellv(cells[0])
+	for cell in cells:
+		set_cellv(cell, Global.GroundTileEnum.SOIL)
+		$Effects.set_cellv(cell, Global.EffectsEnum.EMPTY)
+		
+	emit_signal('crops_harvested', type, len(cells))

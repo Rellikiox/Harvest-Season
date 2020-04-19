@@ -11,6 +11,8 @@ var Deck = null
 
 var actions_left = 0
 var lives_left = 0
+var points = 0
+var turns = 0
 
 
 func init(_game, _ui):
@@ -18,6 +20,7 @@ func init(_game, _ui):
 	Game = _game
 	UI = _ui
 	Deck = DeckManager.new()
+	UI.set_points(0)
 	trigger_turn_start()
 	replenish_actions()
 	
@@ -45,8 +48,15 @@ func replenish_actions():
 	
 func trigger_turn_start():
 	var new_cards = Deck.draw_cards(5)
+	turns += 1
+	UI.set_turns(turns)
 	UI.set_cards(new_cards)
 	UI.enable_end_turn(false)
+	
+	
+func _on_crop_harvested(type, amount):
+	points += pow(amount, 2)
+	UI.set_points(points)
 	
 	
 func _on_crop_death():

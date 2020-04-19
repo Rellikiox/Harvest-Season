@@ -30,6 +30,10 @@ func set_points(points):
 func set_actions(left, total):
 	$HUD/Actions.text = '%d/%d\nActions left' % [left, total]
 	
+
+func set_turns(turns):
+	$HUD/Turns.text = 'Turn %d' % turns
+	
 	
 func discard_cards():
 	for card in $HUD/CardContainer.get_children():
