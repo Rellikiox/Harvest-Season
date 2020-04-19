@@ -9,15 +9,15 @@ var crops = [
 	Global.CardEnum.PLANT_POTATO
 ]
 var deck = {
-	Global.CardEnum.PLANT_BEET: 3,
-	Global.CardEnum.PLANT_PEAS: 3,
-	Global.CardEnum.PLANT_CABBAGE: 3,
+	Global.CardEnum.PLANT_BEET: 2,
+	Global.CardEnum.PLANT_PEAS: 5,
+	Global.CardEnum.PLANT_CABBAGE: 4,
 	Global.CardEnum.PLANT_ONION: 3,
 	Global.CardEnum.PLANT_POTATO: 3,
 	Global.CardEnum.PLACE_SPRINKLER: 1,
-	Global.CardEnum.WATERING_CAN: 5,
+	Global.CardEnum.WATERING_CAN: 4,
 	Global.CardEnum.DIG_GROUND: 3,
-	Global.CardEnum.HARVEST_CROP: 5,
+	Global.CardEnum.HARVEST_CROP: 4,
 	Global.CardEnum.DELETE_TILE: 1
 }
 
@@ -36,13 +36,11 @@ func draw_cards(amount):
 	for card in hand:
 		discard_pile.append(card)
 	
-	hand = []
-	while number_of_crops(hand) < 2:
-		hand = []	
-		for i in range(amount):
-			if draw_pile.empty():
-				replenish_draw_pile()
-			hand.append(draw_pile.pop_front())
+	hand = []	
+	for i in range(amount):
+		if draw_pile.empty():
+			replenish_draw_pile()
+		hand.append(draw_pile.pop_front())
 	
 	return hand
 	
