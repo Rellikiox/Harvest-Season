@@ -26,6 +26,10 @@ func init(_game, _ui):
 	
 
 func end_turn():
+	if actions_left > 0:
+		_on_crop_death()
+		if lives_left == 0:
+			return
 	UI.discard_cards()
 	Game.process_tiles()
 	trigger_turn_start()

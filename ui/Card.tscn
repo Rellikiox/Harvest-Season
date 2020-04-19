@@ -27,10 +27,10 @@ __meta__ = {
 }
 
 [node name="Description" type="Label" parent="CardTexture"]
-margin_left = 5.97083
-margin_top = 100.942
-margin_right = 119.971
-margin_bottom = 114.942
+margin_left = 4.0
+margin_top = 96.0
+margin_right = 124.0
+margin_bottom = 187.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Max size: 3
 

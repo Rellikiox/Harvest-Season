@@ -12,8 +12,8 @@ const CARD_TEXT = {
 """Max size: 3
 
 When harvested:
- +%s points per tile
- +%s if max size""",
+ +2 points per tile
+ +3 if max size""",
 	Global.CardEnum.PLANT_PEAS: 
 """Max size: 5
 

@@ -76,7 +76,7 @@ func set_n_lives(n_lives):
 
 
 func enable_end_turn(enabled=true):
-	$HUD/EndTurn.disabled = not enabled
+	$HUD/EndTurn/Warning.visible = not enabled
 	
 
 # Gameover

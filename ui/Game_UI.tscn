@@ -83,6 +83,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Warning" type="Label" parent="HUD/EndTurn"]
+margin_left = -51.8434
+margin_top = -68.8666
+margin_right = 146.157
+margin_bottom = -37.8666
+text = "End turn early and
+ lose one life"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Actions" type="Label" parent="HUD"]
 anchor_top = 1.0
 anchor_bottom = 1.0
