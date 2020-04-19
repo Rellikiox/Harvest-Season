@@ -68,7 +68,7 @@ func _on_card_drop(_position, card:Cards.BaseCard):
 		card.place(cell, $Ground)
 		$TurnManager.card_played(card)
 	else:
-		SoundManager.play_se('error.wav')
+		SoundManager.play_sfx('error.wav')
 	
 	
 # Tileset management	

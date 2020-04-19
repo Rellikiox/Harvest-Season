@@ -13,15 +13,9 @@ _global_script_classes=[ {
 "class": "Cards",
 "language": "GDScript",
 "path": "res://cards/Cards.gd"
-}, {
-"base": "Node",
-"class": "SoundManagerModule",
-"language": "GDScript",
-"path": "res://addons/sound_manager/module/internal_scripts/SoundManager_config.gd"
 } ]
 _global_script_class_icons={
-"Cards": "",
-"SoundManagerModule": ""
+"Cards": ""
 }
 
 [application]
@@ -33,17 +27,13 @@ config/icon="res://icon.png"
 [autoload]
 
 Global="*res://Global.gd"
-SoundManager="*res://addons/sound_manager/module/SoundManager.tscn"
+SoundManager="*res://SoundManager.tscn"
 
 [display]
 
 window/size/height=753
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
-
-[editor_plugins]
-
-enabled=PoolStringArray( "sound_manager" )
 
 [importer_defaults]
 
