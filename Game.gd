@@ -103,6 +103,7 @@ func highlight_crops():
 	elif $Ground.cell_has(cell, GroundTiles.SPRINKLER):
 		var crop_beds = $Ground.get_sprinkler_targets(cell)
 		$Ground/Highlight.highlight_tiles(crop_beds, HighlightTiles.WATER)
+		$Ground/Highlight.highlight_tiles([cell], HighlightTiles.HIGHLIGHT, false)
 	
 
 # Gameplay Methods

@@ -91,6 +91,8 @@ func reload_sprinkler(cell, charges):
 	
 func get_sprinkler_targets(cell):
 	var sprinkler_level = $SprinklerUI.get_cellv(cell)
+	if sprinkler_level == 0:
+		return []
 	var cells_to_water = get_crop_beds_around_cell(cell)
 	cells_to_water.sort_custom(DistanceSorter.new(cell), 'sort')
 	if len(cells_to_water) > sprinkler_level:
