@@ -103,12 +103,19 @@ class DeleteTileCard extends BaseCard:
 class WateringCanCard extends BaseCard:	
 	var icon = preload('res://assets/wateringcan-icon.png')
 	var texture = preload('res://assets/wateringcan-card.png')
+	
+	func on_tile_hover(cell:Vector2, ground:TileMap, highlight:TileMap):
+		if can_be_placed(cell, ground):
+			var crops = ground.get_adjacent_of_same_type(cell)
+			highlight.highlight_tiles(crops, Global.HighlightTileEnum.WATER)
+		else:
+			highlight.highlight_tiles([cell], Global.HighlightTileEnum.INVALID)
 		
 	func can_be_placed(cell:Vector2, ground:TileMap):
 		return ground.cell_has_crop(cell)
 
 	func place(cell:Vector2, ground:TileMap):
-		ground.water_single_crop(cell)
+		ground.water_crop_bed(cell)
 
 
 

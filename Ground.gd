@@ -104,5 +104,7 @@ func destroy_cell(cell):
 	$Effects.set_cellv(cell, Global.EffectsEnum.EMPTY)
 
 
-func water_single_crop(cell):
-	$Effects.increase_water(cell)
+func water_crop_bed(cell):
+	var bed = get_adjacent_of_same_type(cell)
+	for crop in bed:
+		$Effects.increase_water(crop)
