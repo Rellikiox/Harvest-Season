@@ -84,7 +84,6 @@ func init_tilemaps():
 	$Ground/SprinklerUI.clear()
 	
 	# Clear and init the ground
-	$Ground.clear()
 	for x in range(7):
 		for y in range(7):
 			$Ground.set_cell(x, y, GroundTiles.DIRT)
